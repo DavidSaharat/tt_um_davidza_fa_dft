@@ -13,7 +13,6 @@ project:
   top_module:   "tt_um_davidza_fa_dft"
   source_files:
     - "fa_dft.v"
-    - "tt_um_davidza_fa_dft.v"
 
 pinout:
   ui[0]: "a"
