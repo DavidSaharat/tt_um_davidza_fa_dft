@@ -1,17 +1,21 @@
+# Tiny Tapeout project information
+---
+yaml_version: 6
+
 project:
-  title: "DA_DFT" 
-  description: "A simple Full Adder with Design for Testability (DFT) features." 
-  author: "Davidza" #
-  license: "LICENSE"
-
-  top_module:  "tt_um_davidza_fa_dft"
-
+  title:        "Full Adder with DFT"
+  author:       "Davidza"
+  discord:      ""
+  description:  "A 1-bit full adder with a mux-based DFT test point"
+  language:     "Verilog"
+  clock_hz:     0
+  tiles:        "1x1"
+  top_module:   "tt_um_davidza_fa_dft"
   source_files:
-    - "fa_dft.v"                  # ไฟล์ที่เขียนวงจร fa_dft (ถ้ามี)
-    - "tt_um_davidza_fa_dft.v"    # ไฟล์ Top module
+    - "fa_dft.v"
+    - "tt_um_davidza_fa_dft.v"
 
 pinout:
-
   ui[0]: "a"
   ui[1]: "b"
   ui[2]: "cin"
@@ -30,5 +34,11 @@ pinout:
   uo[6]: ""
   uo[7]: ""
 
-
   uio[0]: ""
+  uio[1]: ""
+  uio[2]: ""
+  uio[3]: ""
+  uio[4]: ""
+  uio[5]: ""
+  uio[6]: ""
+  uio[7]: ""
