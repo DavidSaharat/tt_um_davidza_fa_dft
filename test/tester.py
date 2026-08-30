@@ -71,4 +71,56 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 1)
     assert (int(dut.uo_out.value) & 0b1) == 1
     assert ((int(dut.uo_out.value) >> 1) & 0b1) == 1
-    
+
+# ---------------------------------------------
+    # Test Mode (tmode=1, tin=1)
+    # ---------------------------------------------
+    dut._log.info("Test Mode: tmode=1, tin=1")
+
+    # Test 9: a=0, b=0, cin=0
+    dut.ui_in.value = 0b11000
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 0       # sum
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 0  # cout
+
+    # Test 10: a=1, b=0, cin=0
+    dut.ui_in.value = 0b11001
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 0
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 0
+
+    # Test 11: a=0, b=1, cin=0
+    dut.ui_in.value = 0b11010
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 0
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 0
+
+    # Test 12: a=1, b=1, cin=0
+    dut.ui_in.value = 0b11011
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 0
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 1
+
+    # Test 13: a=0, b=0, cin=1
+    dut.ui_in.value = 0b11100
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 1
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 1
+
+    # Test 14: a=1, b=0, cin=1
+    dut.ui_in.value = 0b11101
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 1
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 1
+
+    # Test 15: a=0, b=1, cin=1
+    dut.ui_in.value = 0b11110
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 1
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 1
+
+    # Test 16: a=1, b=1, cin=1
+    dut.ui_in.value = 0b11111
+    await ClockCycles(dut.clk, 1)
+    assert (int(dut.uo_out.value) & 0b1) == 1
+    assert ((int(dut.uo_out.value) >> 1) & 0b1) == 1
