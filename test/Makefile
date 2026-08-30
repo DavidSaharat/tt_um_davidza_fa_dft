@@ -33,9 +33,8 @@ endif
 COMPILE_ARGS 		+= -I$(SRC_DIR)
 
 # Include the testbench sources:
-VERILOG_SOURCES += $(PWD)/fa_dft.v
+VERILOG_SOURCES += $(PWD)/fa_dft.v.v
 TOPLEVEL = tt_um_davidza_fa_dft
-
 # List test modules to run, separated by commas and without the .py suffix:
 COCOTB_TEST_MODULES = test
 
