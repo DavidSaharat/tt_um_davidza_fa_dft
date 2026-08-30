@@ -44,4 +44,34 @@ mux21 mux2( .A(xorout2), .B(cin), .sel(tmode), .C(sum));
 
 endmodule
 
+// ---------- Wrapper สำหรับเชื่อมต่อกับชิป Tiny Tapeout ----------
+module tt_um_davidza_fa_dft (
+    input  wire [7:0] ui_in,    
+    output wire [7:0] uo_out,   
+    input  wire [7:0] uio_in,   
+    output wire [7:0] uio_out,  
+    output wire [7:0] uio_oe,   
+    input  wire       ena,      
+    input  wire       clk,      
+    input  wire       rst_n     
+);
 
+    wire sum, cout;
+
+    fa_dft fa_dft_inst (
+        .a(ui_in[0]),
+        .b(ui_in[1]),
+        .cin(ui_in[2]),
+        .tmode(ui_in[3]),
+        .tin(ui_in[4]),
+        .sum(sum),
+        .cout(cout)
+    );
+
+    assign uo_out  = {6'b0, cout, sum};
+    assign uio_out = 8'b0;
+    assign uio_oe  = 8'b0;
+
+    wire _unused = &{ena, clk, rst_n, ui_in[7:5], uio_in, 1'b0};
+
+endmodule
