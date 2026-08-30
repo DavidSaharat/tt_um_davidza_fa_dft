@@ -6,7 +6,7 @@ SIM ?= icarus
 FST ?= -fst # Use more efficient FST format
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = fa.dft.v
+PROJECT_SOURCES = fa_dft.v
 
 ifneq ($(GATES),yes)
 
@@ -33,7 +33,7 @@ endif
 COMPILE_ARGS 		+= -I$(SRC_DIR)
 
 # Include the testbench sources:
-VERILOG_SOURCES += $(PWD)/fa_dft.v.v
+VERILOG_SOURCES += $(PWD)/tester.v
 TOPLEVEL = tt_um_davidza_fa_dft
 # List test modules to run, separated by commas and without the .py suffix:
 COCOTB_TEST_MODULES = test
